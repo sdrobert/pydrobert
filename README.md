@@ -28,6 +28,11 @@ import pydrobert.XXX
 - [pydrobert-speech](https://github.com/sdrobert/pydrobert-speech): Digital signal processing for speech. This includes the
   standard Mel-scaled filter banks, and so much more. The results can be saved to NumPy, PyTorch, or Kaldi.
 
+## Defunct Packages
+
+- [pydrobert-gpyopt](https://github.com/sdrobert/pydrobert-gpyopt): Wrappers to make GPyOpt more accessible. PyPI only. Dumped
+  in favour of Optuna.
+
 ## Licensing
 
 All subpackages are [Apache 2.0 licensed](https://tldrlegal.com/license/apache-license-2.0-%28apache-2.0%29).
