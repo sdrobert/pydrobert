@@ -44,7 +44,7 @@ If you use any pydrobert subpackage in an academic publication, please cite as f
 ```
 @misc{robertsonPydrobert2019,
 	title = {pydrobert},
-	url = {https://github.com/sdrobert/pydrobert-pytorch},
+	url = {https://github.com/sdrobert/pydrobert},
 	author = {Robertson, Sean},
 	year = {2019}
 }
