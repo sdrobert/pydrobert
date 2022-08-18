@@ -11,7 +11,7 @@ environment:
 
 init:
   - cmd: call "C:\Miniconda3-x64\Scripts\activate.bat"
-  - sh: >-
+  - sh: |
     if [ "${APPVEYOR_BUILD_WORKER_IMAGE}" = "Ubuntu" ]; then
       wget "${MINICONDA_LINUX_URL}" -O miniconda_install.sh;
     else
