@@ -1,0 +1,23 @@
+version: build.{build}.branch.{branch}
+
+image:
+  - Visual Studio 2017
+  - Ubuntu
+  - macos-mojave
+
+environment:
+  MINICONDA_LINUX_URL: "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+  MINICONDA_OSX_URL: "https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh"
+
+init:
+  - cmd: call "C:\Miniconda3-x64\Scripts\activate.bat"
+  - sh: >-
+    if [ "${APPVEYOR_BUILD_WORKER_IMAGE}" = "Ubuntu" ]; then
+      wget "${MINICONDA_LINUX_URL}" -O miniconda_install.sh;
+    else
+      curl "${MINICONDA_OSX_URL}" -o miniconda_install.sh;
+      sudo mkdir /opt;
+      sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk /opt/MacOSX10.9.sdk;
+    fi
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q --all
