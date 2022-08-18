@@ -10,16 +10,39 @@ environment:
   MINICONDA_OSX_URL: "https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh"
 
 init:
+  - ps: >-
+      if ($env:APPVEYOR_REPO_TAG -eq "true")
+      {
+        Update-AppveyorBuild -Version "$($env:APPVEYOR_REPO_TAG_NAME.TrimStart("v"))"
+      }
   - cmd: call "C:\Miniconda3-x64\Scripts\activate.bat"
-  - sh: |
-    if [ "${APPVEYOR_BUILD_WORKER_IMAGE}" = "Ubuntu" ]; then
-      wget "${MINICONDA_LINUX_URL}" -O miniconda_install.sh;
-    else
-      curl "${MINICONDA_OSX_URL}" -o miniconda_install.sh;
-      sudo mkdir /opt;
-      sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk /opt/MacOSX10.9.sdk;
-    fi
+  - sh: >-
+      if [ "${APPVEYOR_BUILD_WORKER_IMAGE}" = "Ubuntu" ]; then
+        wget "${MINICONDA_LINUX_URL}" -O miniconda_install.sh;
+      else
+        curl "${MINICONDA_OSX_URL}" -o miniconda_install.sh;
+        sudo mkdir /opt;
+        sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk /opt/MacOSX10.9.sdk;
+      fi
+
+install:
+  - sh: >-
+      chmod +x miniconda_install.sh;
+      ./miniconda_install.sh -b -p "${HOME}/miniconda3";
+      source "${HOME}/miniconda3/etc/profile.d/conda.sh";
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q --all
   - conda install conda-build conda-verify
-  - conda build recipe
+
+build_script:
+  - conda build recipe --no-test --croot dist
+
+test_script:
+  - conda build recipe --test --croot dist
+
+after_build:
+  - cmd: 7z a dist.zip dist
+  - sh: zip -r dist.zip dist
+
+artifacts:
+  path: dist.zip
