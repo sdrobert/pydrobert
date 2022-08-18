@@ -21,3 +21,5 @@ init:
     fi
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q --all
+  - conda install conda-build conda-verify
+  - conda build recipe
