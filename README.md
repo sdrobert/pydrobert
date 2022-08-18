@@ -16,7 +16,9 @@ The package can then be imported via
 import pydrobert.XXX
 ```
 
-***This is student-driven code, so don't expect a stable API. I'll try to use semantic versioning, but the best way to keep functionality stable is by pinning the version in the requirements or by forking.***
+***This is student-driven code, so don't expect a stable API. I'll try to use
+semantic versioning, but the best way to keep functionality stable is by
+pinning the version in the requirements or by forking.***
 
 ## Available Packages
 
@@ -38,16 +40,18 @@ import pydrobert.XXX
 
 ## Defunct Packages
 
-- [pydrobert-gpyopt](https://github.com/sdrobert/pydrobert-gpyopt): Wrappers to make GPyOpt more accessible. PyPI only. Dumped
-  in favour of Optuna.
+- [pydrobert-gpyopt](https://github.com/sdrobert/pydrobert-gpyopt): Wrappers to
+  make GPyOpt more accessible. PyPI only. Dumped in favour of Optuna.
 
 ## Licensing
 
-All subpackages are [Apache 2.0 licensed](https://tldrlegal.com/license/apache-license-2.0-%28apache-2.0%29).
+All subpackages are [Apache 2.0
+licensed](https://tldrlegal.com/license/apache-license-2.0-%28apache-2.0%29).
 
 ## How To Cite
 
-If you use any pydrobert subpackage in an academic publication, please cite as follows:
+If you use any pydrobert subpackage in an academic publication, please cite as
+follows:
 
 ``` tex
 @misc{robertsonPydrobert2019,
