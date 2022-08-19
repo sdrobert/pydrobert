@@ -19,6 +19,8 @@ build:
 requirements:
   host:
     - pip
+    - setuptools >=45
+    - setuptools_scm >=6.2
     - python >=3.7
   run:
     - numpy
