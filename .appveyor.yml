@@ -33,10 +33,10 @@ install:
       source "${HOME}/miniconda3/etc/profile.d/conda.sh";
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q --all
-  - conda install conda-build conda-verify
+  - conda install conda-build
 
 build_script:
-  - conda build recipe --no-test --croot dist
+  - conda build recipe --no-test --output-folder dist
 
 test_script:
   - ps: conda build --test (Resolve-Path 'dist\**\*.tar.bz2').Path

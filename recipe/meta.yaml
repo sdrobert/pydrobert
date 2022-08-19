@@ -46,8 +46,8 @@ test:
     - write-pickle-to-table --help
     - compute-error-rate --help
     - normalize-feat-lens --help
-    - write-table-to-torch-dir --help  # [not win]
-    - write-torch-dir-to-table --help  # [not win]
+    - write-table-to-torch-dir --help
+    - write-torch-dir-to-table --help
   requires:
     - pip
     - pytorch
