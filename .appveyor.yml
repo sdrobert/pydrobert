@@ -1,0 +1,28 @@
+version: build.{build}.branch.{branch}
+
+image: Visual Studio 2017
+
+init:
+  - ps: >-
+      if ($env:APPVEYOR_REPO_TAG -eq "true")
+      {
+        Update-AppveyorBuild -Version "$($env:APPVEYOR_REPO_TAG_NAME.TrimStart("v"))"
+      }
+
+install:
+  - cmd: call "C:\Miniconda3-x64\Scripts\activate.bat"
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q --all
+  - conda install conda-build conda-verify
+
+build_script:
+  - conda build recipe --no-test --croot dist
+
+test_script:
+  - conda build recipe --test --croot dist
+
+after_build:
+  - cmd: 7z a dist.zip dist
+
+artifacts:
+  path: dist.zip

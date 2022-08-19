@@ -1,0 +1,50 @@
+{% set name = "pydrobert-speech" %}
+{% set version = "0.3.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pydrobert-speech-{{ version }}.tar.gz
+  sha256: c1fc5cfa7a61e1ee392d8a17594236a4d8fe2b9df4babef51558f1bf7ace748d
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  entry_points:
+    - compute-feats-from-kaldi-tables = pydrobert.speech.command_line:compute_feats_from_kaldi_tables
+    - signals-to-torch-feat-dir = pydrobert.speech.command_line:signals_to_torch_feat_dir
+
+requirements:
+  host:
+    - pip
+    - python >=3.7
+  run:
+    - numpy
+    - python >=3.7
+  run_constrained:
+    - pydrobert-param >0.2.0
+    - pydrobert-kaldi >0.5.3
+    - pydrobert-pytorch >0.2.1
+
+test:
+  imports:
+    - pydrobert.speech
+  commands:
+    - pip check
+    - compute-feats-from-kaldi-tables --help
+    - signals-to-torch-feat-dirs --help
+  requires:
+    - pip
+    - pydrobert-kaldi
+
+about:
+  home: https://github.com/sdrobert/pydrobert-speech
+  summary: Speech processing with Python
+  license: Apache-2.0
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - sdrobert
