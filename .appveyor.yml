@@ -19,7 +19,7 @@ build_script:
   - conda build recipe --no-test --croot dist
 
 test_script:
-  - conda build recipe --test --croot dist
+  - conda build recipe -c sdrobert --test --croot dist
 
 after_build:
   - cmd: 7z a dist.zip dist
