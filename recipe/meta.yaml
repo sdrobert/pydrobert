@@ -32,6 +32,10 @@ requirements:
   run:
     - python
     - {{ pin_compatible('numpy') }}
+  run_constrained:
+    - pydrobert-param >0.2.0
+    - pydrobert-pytorch >0.2.1
+    - pydrobert-speech >0.1.0
 
 test:
   imports:
@@ -52,7 +56,9 @@ about:
   home: https://github.com/sdrobert/pydrobert-kaldi
   summary: Python wrapper for Kaldi
   license: Apache-2.0
-  license_file: LICENSE
+  license_file:
+    - LICENSE
+    - COPYING_Kaldi_Project
 
 extra:
   recipe-maintainers:

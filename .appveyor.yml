@@ -39,11 +39,7 @@ build_script:
   - conda build recipe --no-test --croot dist
 
 test_script:
-  - conda build recipe --test --croot dist
-
-after_build:
-  - cmd: 7z a dist.zip dist
-  - sh: zip -r dist.zip dist
+  - ps: conda build recipe --test (Resolve-Path 'dist\**\*.tar.bz2').Path
 
 artifacts:
-  path: dist.zip
+  path: 'dist\**\*.tar.bz2'
