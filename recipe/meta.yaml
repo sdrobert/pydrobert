@@ -45,7 +45,9 @@ about:
   home: https://github.com/sdrobert/pydrobert-speech
   summary: Speech processing with Python
   license: Apache-2.0
-  license_file: LICENSE
+  license_file:
+    - LICENSE
+    - LICENSE_sph2pipe
 
 extra:
   recipe-maintainers:
