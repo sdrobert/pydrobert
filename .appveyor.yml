@@ -19,10 +19,7 @@ build_script:
   - conda build recipe --no-test --croot dist
 
 test_script:
-  - conda build recipe -c sdrobert --test --croot dist
-
-after_build:
-  - cmd: 7z a dist.zip dist
+  - ps: conda build -c sdrobert --test (Resolve-Path 'dist\**\*.tar.bz2').Path
 
 artifacts:
-  path: dist.zip
+  path: 'dist\**\*.tar.bz2'
