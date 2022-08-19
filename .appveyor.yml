@@ -39,7 +39,7 @@ build_script:
   - conda build recipe --no-test --croot dist
 
 test_script:
-  - ps: conda build recipe --test (Resolve-Path 'dist\**\*.tar.bz2').Path
+  - ps: conda build --test (Resolve-Path 'dist\**\*.tar.bz2').Path
 
 artifacts:
   path: 'dist\**\*.tar.bz2'
