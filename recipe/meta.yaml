@@ -34,7 +34,7 @@ test:
   commands:
     - pip check
     - compute-feats-from-kaldi-tables --help
-    - signals-to-torch-feat-dirs --help
+    - signals-to-torch-feat-dir --help
   requires:
     - pip
     - pydrobert-kaldi
