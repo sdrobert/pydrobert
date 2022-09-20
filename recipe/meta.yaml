@@ -1,5 +1,5 @@
 {% set name = "pydrobert-param" %}
-{% set version = "0.3.1" %}
+{% set version = "0.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pydrobert-param-{{ version }}.tar.gz
-  sha256: b515d1928df3e65414f9d344cf5cda6951f0d962d0288d329c1051d3453d4932
+  sha256: 0fbf38924b1543e824c52821a65334e7fa60e560474e98558ef2ca36d75dc56d
 
 build:
   noarch: python
