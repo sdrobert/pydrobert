@@ -1,5 +1,5 @@
 {% set name = "pydrobert-kaldi" %}
-{% set version = "0.6.2" %}
+{% set version = "0.6.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pydrobert-kaldi-{{ version }}.tar.gz
-  sha256: e4ed97674666d378ae5a0fb2b228a569da8d825d7f4b3902f79935e5ec33f0a0
+  sha256: d44aefb58c96141ef705f7cb4fc692c15f348bb2fdef2a1f275589062c83c66a
 
 build:
   skip: true  # [py<37]
